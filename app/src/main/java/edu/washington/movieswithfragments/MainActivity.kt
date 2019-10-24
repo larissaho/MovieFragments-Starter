@@ -25,53 +25,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        listview_movies.adapter = ArrayAdapter(this, R.layout.list_item, R.id.txt_item, movies)
-        listview_movies.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-            val movie = parent.getItemAtPosition(position) as Movie
-            Log.v(TAG, "You clicked on: $movie")
+        val searchTerm = txt_search.text.toString()
+
+        val fragment: MoveListFragment = MoveListFragment.newInstance(searchTerm)
+
+        supportFragmentManager.beginTransaction().run {
+            add(R.id.movie_fragment, fragment, searchTerm)
+            commit()
         }
     }
 
-    fun handleSearchClick(v: View) {
-        downloadMovieData(txt_search.text.toString())
-    }
-
-    private fun downloadMovieData(searchTerm: String) {
-        var urlString = ""
-        try {
-            urlString = "https://itunes.apple.com/search?term=" + URLEncoder.encode(searchTerm, "UTF-8") + "&media=movie&entity=movie&limit=25"
-            Log.v(TAG, urlString);
-        } catch (uee: UnsupportedEncodingException) {
-            Log.e(TAG, uee.toString())
-            return
-        }
-
-        val request = JsonObjectRequest(
-            Request.Method.GET, urlString, null,
-            Response.Listener { response ->
-                val results = response.getJSONArray("results")
-                (listview_movies.adapter as ArrayAdapter<Movie>).clear()
-                for (i in 0 until results.length()) {
-                    val track = results.getJSONObject(i)
-                    if (track.getString("wrapperType") == "track") {
-                        track.apply {
-                            val movie = Movie(
-                                getString("trackName"),
-                                getString("releaseDate"),
-                                getString("longDescription"),
-                                getString("trackViewUrl"))
-                            movies.add(movie)
-                        }
-                    }
-                }
-
-                (listview_movies.adapter as ArrayAdapter<Movie>).notifyDataSetChanged()
-            },
-            Response.ErrorListener { error -> Log.e(TAG, error.toString()) })
-        VolleyService.requestQueue(this)?.add(request)
+    fun handleSearchClick(v: View): String {
+//        downloadMovieData(txt_search.text.toString())
     }
 
     companion object {
-        private val TAG = "MainActivity"
+        val TAG = "MainActivity"
     }
 }
