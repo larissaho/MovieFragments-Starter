@@ -25,48 +25,10 @@
                 android:drawableLeft="@android:drawable/ic_menu_search"
                 android:onClick="handleSearchClick"/>
 
-        <ListView
-                android:id="@+id/listview_movies"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_search"/>
+        <fragment
+            android:id="@+id/movie_fragment"
+            android:name="edu.washington.movieswithfragments.MoveListFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
 </RelativeLayout>
-<!--<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:context=".MainActivity"
-        android:fitsSystemWindows="true">
-        <EditText
-                android:id="@+id/txt_search"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/search_hint"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btn_search"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/listview_movies"/>
-
-        <Button
-                android:id="@+id/btn_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/txt_search"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="@id/txt_search"
-                android:text="Search"
-                android:drawableLeft="@android:drawable/ic_menu_search"
-                android:onClick="handleSearchClick"/>
-
-        <ListView
-                android:id="@+id/listview_movies"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_search"/>
-</androidx.constraintlayout.widget.ConstraintLayout>-->

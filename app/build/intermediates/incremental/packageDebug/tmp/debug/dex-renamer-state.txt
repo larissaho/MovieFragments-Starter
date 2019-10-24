@@ -1,0 +1,7 @@
+#Thu Oct 24 11:01:49 PDT 2019
+base.0=/Users/larissaho/Desktop/UW/INFO448/MovieFragments-Starter/app/build/intermediates/dex/debug/mergeExtDexDebug/out
+path.1=classes.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=/Users/larissaho/Desktop/UW/INFO448/MovieFragments-Starter/app/build/intermediates/dex/debug/mergeProjectDexDebug/out

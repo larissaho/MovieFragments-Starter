@@ -12,6 +12,7 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_move_list.*
 import org.json.JSONException
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
